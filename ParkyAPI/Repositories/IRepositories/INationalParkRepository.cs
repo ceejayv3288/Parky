@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ParkyAPI.Repositories.IRepository
+namespace ParkyAPI.Repositories.IRepositories
 {
     public interface INationalParkRepository
     {
