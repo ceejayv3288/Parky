@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using ParkyAPI.Data;
 using ParkyAPI.Mappers.ParkyMapper;
 using ParkyAPI.Repositories;
-using ParkyAPI.Repositories.IRepository;
+using ParkyAPI.Repositories.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

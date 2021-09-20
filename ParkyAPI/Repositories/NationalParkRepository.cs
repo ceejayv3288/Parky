@@ -1,6 +1,6 @@
 ﻿using ParkyAPI.Data;
 using ParkyAPI.Models;
-using ParkyAPI.Repositories.IRepository;
+using ParkyAPI.Repositories.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
