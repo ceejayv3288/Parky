@@ -15,7 +15,7 @@ namespace ParkyAPI.Controllers
     [ApiController]
     public class NationalParksController : Controller
     {
-        private INationalParkRepository _nationalParkRepository;
+        private readonly INationalParkRepository _nationalParkRepository;
         private readonly IMapper _mapper;
 
         public NationalParksController(INationalParkRepository nationalParkRepository, IMapper mapper)
@@ -24,6 +24,10 @@ namespace ParkyAPI.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Get list of national parks
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult GetNationalParks()
         {
@@ -38,6 +42,11 @@ namespace ParkyAPI.Controllers
             return Ok(objDto);
         }
 
+        /// <summary>
+        /// Get individual national park
+        /// </summary>
+        /// <param name="nationalParkId"> The Id of the national park</param>
+        /// <returns></returns>
         [HttpGet("{nationalParkId:int}", Name = "GetNationalPark")]
         public IActionResult GetNationalPark(int nationalParkId)
         {
