@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ParkyAPI.Data;
 using ParkyAPI.Models;
+using ParkyAPI.Repositories.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ParkyAPI.Repositories
 {
-    public class TrailRepository
+    public class TrailRepository : ITrailRepository
     {
         private readonly ApplicationDbContext _db;
 
