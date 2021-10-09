@@ -36,5 +36,12 @@
             <param name="trailId"></param>
             <returns></returns>
         </member>
+        <member name="M:ParkyAPI.Controllers.TrailsController.GetTrailsInNationalPark(System.Int32)">
+            <summary>
+            Get trails based on national park
+            </summary>
+            <param name="nationalParkId"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
