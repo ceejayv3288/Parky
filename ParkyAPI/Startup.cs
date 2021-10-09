@@ -40,12 +40,12 @@ namespace ParkyAPI
             services.AddAutoMapper(typeof(ParkyMappings));
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("ParkyOpenAPISpec",
+                options.SwaggerDoc("ParkyOpenAPISpecNationalParks",
                                     new Microsoft.OpenApi.Models.OpenApiInfo()
                                     {
-                                        Title = "Parky API",
+                                        Title = "Parky API (National Parks)",
                                         Version = "1",
-                                        Description = "Parky API",
+                                        Description = "Parky API National Parks",
                                         Contact = new Microsoft.OpenApi.Models.OpenApiContact()
                                         {
                                             Email = "ceejayv328@gmail.com",
@@ -58,6 +58,25 @@ namespace ParkyAPI
                                             Url = new Uri("https://en.wikipedia.org/wiki/MIT_License")
                                         }
                                     }) ;
+
+                options.SwaggerDoc("ParkyOpenAPISpecTrails",
+                                    new Microsoft.OpenApi.Models.OpenApiInfo()
+                                    {
+                                        Title = "Parky API (Trails)",
+                                        Version = "1",
+                                        Description = "Parky API Trails",
+                                        Contact = new Microsoft.OpenApi.Models.OpenApiContact()
+                                        {
+                                            Email = "ceejayv328@gmail.com",
+                                            Name = "Christian Joseph Vargas",
+                                            Url = new Uri("https://www.linkedin.com/in/christian-joseph-vargas-0001481a3/")
+                                        },
+                                        License = new Microsoft.OpenApi.Models.OpenApiLicense()
+                                        {
+                                            Name = "MIT License",
+                                            Url = new Uri("https://en.wikipedia.org/wiki/MIT_License")
+                                        }
+                                    });
                 var xmlCommentFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var cmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
                 options.IncludeXmlComments(cmlCommentsFullPath);
@@ -78,7 +97,8 @@ namespace ParkyAPI
             app.UseSwagger();
             app.UseSwaggerUI(options => 
             {
-                options.SwaggerEndpoint("/swagger/ParkyOpenAPISpec/swagger.json", "Parky API");
+                options.SwaggerEndpoint("/swagger/ParkyOpenAPISpecNationalParks/swagger.json", "Parky API National Parks");
+                options.SwaggerEndpoint("/swagger/ParkyOpenAPISpecTrails/swagger.json", "Parky API Trails");
                 options.RoutePrefix = "";
             });
 

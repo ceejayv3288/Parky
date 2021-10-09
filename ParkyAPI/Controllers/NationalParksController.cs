@@ -11,8 +11,10 @@ using System.Threading.Tasks;
 
 namespace ParkyAPI.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
+    [Route("api/NationalParks")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "ParkyOpenAPISpecNationalParks")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public class NationalParksController : Controller
     {
