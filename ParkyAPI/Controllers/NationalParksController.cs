@@ -12,9 +12,10 @@ using System.Threading.Tasks;
 namespace ParkyAPI.Controllers
 {
     //[Route("api/[controller]")]
-    [Route("api/NationalParks")]
+    //[Route("api/NationalParks")]
+    [Route("api/v{version:apiVersion}/nationalparks")]
     [ApiController]
-    [ApiExplorerSettings(GroupName = "ParkyOpenAPISpecNationalParks")]
+    //[ApiExplorerSettings(GroupName = "ParkyOpenAPISpecNationalParks")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public class NationalParksController : Controller
     {
@@ -94,7 +95,9 @@ namespace ParkyAPI.Controllers
             }
 
             //return Ok();
-            return CreatedAtRoute("GetNationalPark", new { nationalParkId = nationalParkObj.Id}, nationalParkObj);
+            //return CreatedAtRoute("GetNationalPark", new { nationalParkId = nationalParkObj.Id}, nationalParkObj);
+            return CreatedAtRoute("GetNationalPark", new { version=HttpContext.GetRequestedApiVersion().ToString(), 
+                                                           nationalParkId = nationalParkObj.Id }, nationalParkObj);
         }
 
         [HttpPatch("{nationalParkId:int}", Name = "UpdateNationalPark")]
