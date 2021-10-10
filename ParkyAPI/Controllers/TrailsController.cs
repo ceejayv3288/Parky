@@ -121,7 +121,12 @@ namespace ParkyAPI.Controllers
             }
 
             //return Ok();
-            return CreatedAtRoute("CreateTrail", new { trailId = trailObj.Id}, trailObj);
+            //return CreatedAtRoute("GetTrail", new { trailId = trailObj.Id}, trailObj);
+            return CreatedAtRoute("GetTrail", new
+            {
+                version = HttpContext.GetRequestedApiVersion().ToString(),
+                trailId = trailObj.Id
+            }, trailObj);
         }
 
         [HttpPatch("{trailId:int}", Name = "UpdateTrail")]
