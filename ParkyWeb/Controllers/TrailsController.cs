@@ -85,7 +85,7 @@ namespace ParkyWeb.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
-            var status = await _nationalParkRepository.DeleteAsync(StaticDetails.TrailAPIPath, id);
+            var status = await _trailRepository.DeleteAsync(StaticDetails.TrailAPIPath, id);
             if (status)
             {
                 return Json(new { success = true, message = "Delete Successful"});
