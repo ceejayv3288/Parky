@@ -23,6 +23,11 @@ namespace ParkyWeb.Controllers
             return View(new NationalPark() { });
         }
 
+        public async Task<IActionResult> GetAllNationalParks()
+        {
+            return Json(new { data = await _nationalParkRepository.GetAllAsync(StaticDetails.NationalParkAPIPath) });
+        }
+
         public async Task<IActionResult> Upsert(int? id)
         {
             NationalPark obj = new NationalPark();
@@ -39,11 +44,6 @@ namespace ParkyWeb.Controllers
                 return NotFound();
             }
             return View(obj);
-        }
-
-        public async Task<IActionResult> GetAllNationalParks()
-        {
-            return Json(new { data = await _nationalParkRepository.GetAllAsync(StaticDetails.NationalParkAPIPath) });
         }
 
         [HttpPost]
