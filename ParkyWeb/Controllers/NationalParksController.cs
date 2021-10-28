@@ -69,7 +69,7 @@ namespace ParkyWeb.Controllers
                 else
                 {
                     var objFromDb = await _nationalParkRepository.GetAsync(StaticDetails.NationalParkAPIPath, obj.Id);
-                    obj.Picture = objFromDb.Picture;
+                    obj.Picture = objFromDb?.Picture;
                 }
                 if (obj.Id == 0)
                 {

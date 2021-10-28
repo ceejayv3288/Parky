@@ -79,7 +79,18 @@ namespace ParkyWeb.Controllers
             }
             else
             {
-                return View(obj);
+                IEnumerable<NationalPark> nationalParkList = await _nationalParkRepository.GetAllAsync(StaticDetails.NationalParkAPIPath);
+
+                TrailsViewModel objVM = new TrailsViewModel()
+                {
+                    NationalParkList = nationalParkList.Select(i => new SelectListItem
+                    {
+                        Text = i.Name,
+                        Value = i.Id.ToString()
+                    }),
+                    Trail = obj.Trail
+                };
+                return View(objVM);
             }
         }
 
