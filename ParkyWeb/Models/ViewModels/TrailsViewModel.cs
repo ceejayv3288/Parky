@@ -9,6 +9,6 @@ namespace ParkyWeb.Models.ViewModels
     public class TrailsViewModel
     {
         public IEnumerable<SelectListItem> NationalParkList { get; set; }
-        public TrailModel Trail { get; set; }
+        public Trail Trail { get; set; }
     }
 }

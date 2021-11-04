@@ -24,7 +24,7 @@ namespace ParkyWeb.Controllers
 
         public IActionResult Index()
         {
-            return View(new TrailModel() { });
+            return View(new Trail() { });
         }
 
         public async Task<IActionResult> GetAllTrails()
@@ -34,7 +34,7 @@ namespace ParkyWeb.Controllers
 
         public async Task<IActionResult> Upsert(int? id)
         {
-            IEnumerable<NationalParkModel> nationalParkList = await _nationalParkRepository.GetAllAsync(StaticDetails.NationalParkAPIPath);
+            IEnumerable<NationalPark> nationalParkList = await _nationalParkRepository.GetAllAsync(StaticDetails.NationalParkAPIPath);
 
             TrailsViewModel objVM = new TrailsViewModel()
             {
@@ -43,7 +43,7 @@ namespace ParkyWeb.Controllers
                     Text = i.Name,
                     Value = i.Id.ToString()
                 }),
-                Trail = new TrailModel()
+                Trail = new Trail()
             };
 
             if (id == null)
@@ -79,7 +79,7 @@ namespace ParkyWeb.Controllers
             }
             else
             {
-                IEnumerable<NationalParkModel> nationalParkList = await _nationalParkRepository.GetAllAsync(StaticDetails.NationalParkAPIPath);
+                IEnumerable<NationalPark> nationalParkList = await _nationalParkRepository.GetAllAsync(StaticDetails.NationalParkAPIPath);
 
                 TrailsViewModel objVM = new TrailsViewModel()
                 {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ParkyWeb.Repositories
 {
-    public class NationalParkRepository : Repository<NationalParkModel>, INationalParkRepository
+    public class NationalParkRepository : Repository<NationalPark>, INationalParkRepository
     {
         private readonly IHttpClientFactory _clientFactory;
 

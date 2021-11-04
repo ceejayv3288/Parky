@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ParkyWeb.Repositories
 {
-    public class TrailRepository : Repository<TrailModel>, ITrailRepository
+    public class TrailRepository : Repository<Trail>, ITrailRepository
     {
         private readonly IHttpClientFactory _clientFactory;
 
