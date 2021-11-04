@@ -18,24 +18,24 @@ namespace ParkyAPI.Repositories
             _db = db;
         }
 
-        public bool CreateTrail(TrailModel trail)
+        public bool CreateTrail(Trail trail)
         {
             _db.Trails.Add(trail);
             return Save();
         }
 
-        public bool DeleteTrail(TrailModel trail)
+        public bool DeleteTrail(Trail trail)
         {
             _db.Trails.Remove(trail);
             return Save();
         }
 
-        public TrailModel GetTrail(int trailId)
+        public Trail GetTrail(int trailId)
         {
             return _db.Trails.Include(c => c.NationalPark).FirstOrDefault(x => x.Id == trailId);
         }
 
-        public ICollection<TrailModel> GetTrails()
+        public ICollection<Trail> GetTrails()
         {
             return _db.Trails.Include(c => c.NationalPark).OrderBy(x => x.Name).ToList();
         }
@@ -56,13 +56,13 @@ namespace ParkyAPI.Repositories
             return _db.SaveChanges() >= 0 ? true : false;
         }
 
-        public bool UpdateTrail(TrailModel trail)
+        public bool UpdateTrail(Trail trail)
         {
             _db.Trails.Update(trail);
             return Save();
         }
 
-        public ICollection<TrailModel> GetTrailsInNationalPark(int nationalParkId)
+        public ICollection<Trail> GetTrailsInNationalPark(int nationalParkId)
         {
             return _db.Trails.Include(c => c.NationalPark).Where(c => c.NationalParkId == nationalParkId).ToList();
         }
