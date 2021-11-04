@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
-using static ParkyAPI.Models.Trail;
+using static ParkyAPI.Models.TrailModel;
 
 namespace ParkyAPI.Models.Dtos
 {

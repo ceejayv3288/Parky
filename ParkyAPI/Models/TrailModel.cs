@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ParkyAPI.Models
 {
-    public class Trail
+    public class TrailModel
     {
         [Key]
         public int Id { get; set; }
@@ -29,6 +29,6 @@ namespace ParkyAPI.Models
         public int NationalParkId { get; set; }
 
         [ForeignKey("NationalParkId")]
-        public NationalPark NationalPark { get; set; }
+        public NationalParkModel NationalPark { get; set; }
     }
 }

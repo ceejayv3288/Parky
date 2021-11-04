@@ -116,7 +116,7 @@ namespace ParkyAPI.Controllers
                 return StatusCode(404, ModelState);
             }
 
-            var trailObj = _mapper.Map<Trail>(trailDto);
+            var trailObj = _mapper.Map<TrailModel>(trailDto);
             if (!_trailRepository.CreateTrail(trailObj))
             {
                 ModelState.AddModelError("", $"Something went wrong when saving the record {trailObj.Name}");
@@ -143,7 +143,7 @@ namespace ParkyAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var trailObj = _mapper.Map<Trail>(trailDto);
+            var trailObj = _mapper.Map<TrailModel>(trailDto);
             if (!_trailRepository.UpdateTrail(trailObj))
             {
                 ModelState.AddModelError("", $"Something went wrong when updating the record {trailObj.Name}");

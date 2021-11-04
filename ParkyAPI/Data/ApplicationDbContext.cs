@@ -14,8 +14,8 @@ namespace ParkyAPI.Data
 
         }
 
-        public DbSet<NationalPark> NationalParks { get; set; }
-        public DbSet<Trail> Trails { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<NationalParkModel> NationalParks { get; set; }
+        public DbSet<TrailModel> Trails { get; set; }
+        public DbSet<UserModel> Users { get; set; }
     }
 }

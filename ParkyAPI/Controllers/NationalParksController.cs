@@ -89,7 +89,7 @@ namespace ParkyAPI.Controllers
                 return StatusCode(404, ModelState);
             }
 
-            var nationalParkObj = _mapper.Map<NationalPark>(nationalParkDto);
+            var nationalParkObj = _mapper.Map<NationalParkModel>(nationalParkDto);
             if (!_nationalParkRepository.CreateNationalPark(nationalParkObj))
             {
                 ModelState.AddModelError("", $"Something went wrong when saving the record {nationalParkObj.Name}");
@@ -113,7 +113,7 @@ namespace ParkyAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var nationalParkObj = _mapper.Map<NationalPark>(nationalParkDto);
+            var nationalParkObj = _mapper.Map<NationalParkModel>(nationalParkDto);
             if (!_nationalParkRepository.UpdateNationalPark(nationalParkObj))
             {
                 ModelState.AddModelError("", $"Something went wrong when updating the record {nationalParkObj.Name}");

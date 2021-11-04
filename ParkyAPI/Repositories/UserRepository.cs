@@ -24,7 +24,7 @@ namespace ParkyAPI.Repositories
             _appSettings = appsettings.Value;
         }
 
-        public User Authenticate(string username, string password)
+        public UserModel Authenticate(string username, string password)
         {
             var user = _db.Users.SingleOrDefault(x => x.Username == username && x.Password == password);
 
@@ -60,9 +60,9 @@ namespace ParkyAPI.Repositories
             return false;
         }
 
-        public User Register(string username, string password)
+        public UserModel Register(string username, string password)
         {
-            User userObj = new User()
+            UserModel userObj = new UserModel()
             {
                 Username = username,
                 Password = password,
