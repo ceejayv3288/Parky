@@ -20,7 +20,7 @@ namespace ParkyWeb.Controllers
 
         public IActionResult Index()
         {
-            return View(new NationalPark() { });
+            return View(new NationalParkModel() { });
         }
 
         public async Task<IActionResult> GetAllNationalParks()
@@ -30,7 +30,7 @@ namespace ParkyWeb.Controllers
 
         public async Task<IActionResult> Upsert(int? id)
         {
-            NationalPark obj = new NationalPark();
+            NationalParkModel obj = new NationalParkModel();
             if (id == null)
             {
                 //this will be true for Insert/Create
@@ -48,7 +48,7 @@ namespace ParkyWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Upsert(NationalPark obj)
+        public async Task<IActionResult> Upsert(NationalParkModel obj)
         {
             if (ModelState.IsValid)
             {
