@@ -44,6 +44,7 @@ namespace ParkyAPI.Repositories
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             user.Token = tokenHandler.WriteToken(token);
+            user.Password = string.Empty;
 
             return user;
         }
