@@ -63,7 +63,7 @@ namespace ParkyWeb.Controllers
                 return View();
 
             HttpContext.Session.SetString("JWToken", userObj.Token);
-            return RedirectToAction("~/Home/Index");
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -78,13 +78,13 @@ namespace ParkyWeb.Controllers
             bool result = await _accountRepository.RegisterAsync(StaticDetails.AccountAPIPath + "register/", obj);
             if (!result)
                 return View();
-            return RedirectToAction("~/Home/Login");
+            return RedirectToAction("Login");
         }
 
         public IActionResult Logout(UserModel obj)
         {
             HttpContext.Session.SetString("JWToken", string.Empty);
-            return RedirectToAction("~/Home/Index");
+            return RedirectToAction("Index");
         }
     }
 }
