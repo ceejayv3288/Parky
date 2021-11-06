@@ -7,7 +7,7 @@ $(document).ready(function () {
 function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": {
-            "url": "/nationalParks/GetAllNationalParks",
+            "url": "/NationalParks/GetAllNationalParks",
             "type": "GET",
             "datatype": "json"
         },

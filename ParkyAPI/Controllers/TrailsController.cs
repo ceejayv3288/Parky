@@ -103,6 +103,7 @@ namespace ParkyAPI.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateTrail([FromBody] TrailCreateDto trailDto)
         {
             if (trailDto == null)
@@ -136,6 +137,7 @@ namespace ParkyAPI.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Authorize(Roles = "Admin")]
         public IActionResult UpdateTrail(int trailId, [FromBody] TrailUpdateDto trailDto)
         {
             if (trailDto == null || trailId != trailDto.Id)
@@ -158,6 +160,7 @@ namespace ParkyAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteTrail(int trailId)
         {
             if (!_trailRepository.TrailExists(trailId))
