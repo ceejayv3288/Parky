@@ -1,4 +1,6 @@
-﻿<div class="p-4" style="border-radius:20px;">
+﻿@model ParkyWeb.Models.NationalPark
+
+<div class="p-4" style="border-radius:20px;">
     <div class="row">
         <div class="col-6">
             <h2 class="text-info">National Park List</h2>
@@ -23,5 +25,8 @@
 </div>
 
 @section Scripts{ 
-<script src="~/js/nationalPark.js"></script>
+    <script>
+    var role = '@Model.Role'
+    </script>
+    <script src="~/js/nationalPark.js"></script>
 }

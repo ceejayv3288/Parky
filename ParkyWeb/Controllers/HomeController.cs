@@ -63,6 +63,7 @@ namespace ParkyWeb.Controllers
                 return View();
 
             HttpContext.Session.SetString("JWToken", userObj.Token);
+            HttpContext.Session.SetString("Role", userObj.Role);
             return RedirectToAction("Index");
         }
 
@@ -84,6 +85,7 @@ namespace ParkyWeb.Controllers
         public IActionResult Logout(UserModel obj)
         {
             HttpContext.Session.SetString("JWToken", string.Empty);
+            HttpContext.Session.SetString("Role", string.Empty);
             return RedirectToAction("Index");
         }
     }

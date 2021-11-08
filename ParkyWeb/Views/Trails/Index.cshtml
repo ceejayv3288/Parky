@@ -1,4 +1,6 @@
-﻿<div class="p-4" style="border-radius:20px;">
+﻿@model ParkyWeb.Models.Trail
+
+<div class="p-4" style="border-radius:20px;">
     <div class="row">
         <div class="col-6">
             <h2 class="text-info">Trail List</h2>
@@ -25,5 +27,8 @@
 </div>
 
 @section Scripts{
+    <script>
+    var role = '@Model.Role'
+    </script>
     <script src="~/js/trail.js"></script>
 }

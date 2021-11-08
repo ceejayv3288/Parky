@@ -2,6 +2,8 @@
 
 $(document).ready(function () {
     loadDataTable();
+    if (role != "Admin")
+        dataTable.column(4).visible(false);
 });
 
 function loadDataTable() {

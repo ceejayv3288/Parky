@@ -25,7 +25,7 @@ namespace ParkyWeb.Controllers
 
         public IActionResult Index()
         {
-            return View(new Trail() { });
+            return View(new Trail() { Role = HttpContext.Session.GetString("Role") });
         }
 
         public async Task<IActionResult> GetAllTrails()

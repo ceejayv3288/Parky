@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ParkyWeb.Models
 {
-    public class Trail
+    public class Trail : BaseClass
     {
         public int Id { get; set; }
 

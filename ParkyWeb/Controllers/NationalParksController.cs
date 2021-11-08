@@ -21,7 +21,7 @@ namespace ParkyWeb.Controllers
 
         public IActionResult Index()
         {
-            return View(new NationalPark() { });
+            return View(new NationalPark() { Role = HttpContext.Session.GetString("Role") });
         }
 
         public async Task<IActionResult> GetAllNationalParks()
