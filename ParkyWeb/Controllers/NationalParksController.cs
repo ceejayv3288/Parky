@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ParkyWeb.Models;
 using ParkyWeb.Repositories.IRepositories;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace ParkyWeb.Controllers
 {
+    [Authorize]
     public class NationalParksController : Controller
     {
         private readonly INationalParkRepository _nationalParkRepository;
@@ -21,7 +23,7 @@ namespace ParkyWeb.Controllers
 
         public IActionResult Index()
         {
-            return View(new NationalPark() { Role = HttpContext.Session.GetString("Role") });
+            return View(new NationalPark());
         }
 
         public async Task<IActionResult> GetAllNationalParks()
@@ -29,6 +31,7 @@ namespace ParkyWeb.Controllers
             return Json(new { data = await _nationalParkRepository.GetAllAsync(StaticDetails.NationalParkAPIPath, HttpContext.Session.GetString("JWToken")) });
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Upsert(int? id)
         {
             NationalPark obj = new NationalPark();
@@ -43,6 +46,7 @@ namespace ParkyWeb.Controllers
             if (obj == null)
             {
                 return NotFound();
+                //Response.Redirect("https://localhost:44371/Home/Login");
             }
             return View(obj);
         }
@@ -89,6 +93,7 @@ namespace ParkyWeb.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var status = await _nationalParkRepository.DeleteAsync(StaticDetails.NationalParkAPIPath, id, HttpContext.Session.GetString("JWToken"));

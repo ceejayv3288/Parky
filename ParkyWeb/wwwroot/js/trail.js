@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
     loadDataTable();
-    if (role != "Admin")
+    if (!isAdmin)
         dataTable.column(4).visible(false);
 });
 

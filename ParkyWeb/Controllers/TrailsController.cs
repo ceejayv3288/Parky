@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ParkyWeb.Models;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace ParkyWeb.Controllers
 {
+    [Authorize]
     public class TrailsController : Controller
     {
         private readonly INationalParkRepository _nationalParkRepository;
@@ -25,7 +27,7 @@ namespace ParkyWeb.Controllers
 
         public IActionResult Index()
         {
-            return View(new Trail() { Role = HttpContext.Session.GetString("Role") });
+            return View(new Trail());
         }
 
         public async Task<IActionResult> GetAllTrails()
@@ -33,6 +35,7 @@ namespace ParkyWeb.Controllers
             return Json(new { data = await _trailRepository.GetAllAsync(StaticDetails.TrailAPIPath, HttpContext.Session.GetString("JWToken")) });
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Upsert(int? id)
         {
             IEnumerable<NationalPark> nationalParkList = await _nationalParkRepository.GetAllAsync(StaticDetails.NationalParkAPIPath, HttpContext.Session.GetString("JWToken"));
@@ -96,6 +99,7 @@ namespace ParkyWeb.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var status = await _trailRepository.DeleteAsync(StaticDetails.TrailAPIPath, id, HttpContext.Session.GetString("JWToken"));

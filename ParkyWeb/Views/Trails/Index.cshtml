@@ -1,6 +1,4 @@
-﻿@model ParkyWeb.Models.Trail
-
-<div class="p-4" style="border-radius:20px;">
+﻿<div class="p-4" style="border-radius:20px;">
     <div class="row">
         <div class="col-6">
             <h2 class="text-info">Trail List</h2>
@@ -28,7 +26,7 @@
 
 @section Scripts{
     <script>
-    var role = '@Model.Role'
+        var isAdmin = @User.IsInRole("Admin").ToString().ToLower();
     </script>
     <script src="~/js/trail.js"></script>
 }
